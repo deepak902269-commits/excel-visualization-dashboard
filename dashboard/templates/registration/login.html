@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div style="
+max-width:500px;
+margin:auto;
+margin-top:50px;
+">
+
+<div class="card">
+
+    <div style="
+    text-align:center;
+    margin-bottom:30px;
+    ">
+
+        <h1 class="title">
+            🔐 Login
+        </h1>
+
+        <p style="
+        color:#94a3b8;
+        ">
+            Access your visualization dashboard
+        </p>
+
+    </div>
+
+    <form method="post">
+
+        {% csrf_token %}
+
+        <label>
+            Username
+        </label>
+
+        {{ form.username }}
+
+        <label>
+            Password
+        </label>
+
+        {{ form.password }}
+
+        <br>
+
+        <button
+            type="submit"
+            class="btn btn-primary"
+            style="
+            width:100%;
+            padding:15px;
+            font-size:18px;
+            ">
+
+            Login
+
+        </button>
+
+    </form>
+
+    <hr style="
+    margin:25px 0;
+    border:1px solid rgba(255,255,255,.1);
+    ">
+
+    <p style="
+    text-align:center;
+    color:#94a3b8;
+    ">
+
+        Don't have an account?
+
+        <a href="/register/"
+           style="
+           color:#38bdf8;
+           text-decoration:none;
+           font-weight:bold;
+           ">
+
+           Register Here
+
+        </a>
+
+    </p>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div style="
+max-width:600px;
+margin:auto;
+margin-top:50px;
+">
+
+<div class="card">
+
+    <h1 class="title">
+        🚀 Create Account
+    </h1>
+
+    <p style="
+    color:#94a3b8;
+    margin-bottom:25px;
+    ">
+        Start generating beautiful visualizations
+    </p>
+
+    <form method="post">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button
+            type="submit"
+            class="btn btn-success"
+            style="
+            width:100%;
+            padding:15px;
+            font-size:18px;
+            ">
+
+            Register
+
+        </button>
+
+    </form>
+
+    <br>
+
+    <p style="
+    text-align:center;
+    ">
+
+        Already have an account?
+
+        <a href="/accounts/login/"
+           style="
+           color:#38bdf8;
+           text-decoration:none;
+           font-weight:bold;
+           ">
+
+           Login
+
+        </a>
+
+    </p>
+
+</div>
+
+</div>
+
+{% endblock %}

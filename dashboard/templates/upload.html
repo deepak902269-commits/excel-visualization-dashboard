@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card">
+
+    <h1 class="title">
+        Upload Excel File
+    </h1>
+
+    <p style="
+        color:#94a3b8;
+        margin-bottom:25px;
+        font-size:18px;
+    ">
+        Upload CSV, XLSX or XLS files to generate beautiful visualizations.
+    </p>
+
+    <form method="POST"
+          enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <div style="
+            border:2px dashed #38bdf8;
+            border-radius:20px;
+            padding:50px;
+            text-align:center;
+            background:rgba(255,255,255,.03);
+            transition:.4s;
+        "
+        onmouseover="
+            this.style.transform='scale(1.02)';
+            this.style.borderColor='#8b5cf6';
+        "
+        onmouseout="
+            this.style.transform='scale(1)';
+            this.style.borderColor='#38bdf8';
+        "
+        >
+
+            <div style="
+                font-size:70px;
+                margin-bottom:20px;
+            ">
+                📁
+            </div>
+
+            <h2>
+                Select File
+            </h2>
+
+            <p style="
+                color:#94a3b8;
+                margin-top:10px;
+            ">
+                Supported:
+                CSV, XLSX, XLS
+            </p>
+
+            <br>
+
+            {{ form.as_p }}
+
+        </div>
+
+        <br>
+
+        <button
+            class="btn btn-success"
+            style="
+            width:100%;
+            font-size:18px;
+            padding:15px;
+            ">
+            Upload File
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card">
+
+    <h1 class="title">
+        📈 Data Preview
+    </h1>
+
+    <p style="
+        color:#94a3b8;
+        margin-bottom:25px;
+    ">
+        File:
+        <strong>{{ file.file.name }}</strong>
+    </p>
+
+    <div style="
+        overflow-x:auto;
+        border-radius:15px;
+    ">
+
+        {{ preview|safe }}
+
+    </div>
+
+</div>
+
+<br>
+
+<div class="card">
+
+    <h1 class="title">
+        🎨 Generate Visualization
+    </h1>
+
+    <form method="POST"
+          action="{% url 'generate' file.id %}">
+
+        {% csrf_token %}
+
+        <div style="
+            display:grid;
+            grid-template-columns:1fr 1fr 1fr;
+            gap:20px;
+        ">
+
+            <div>
+
+                <label>
+                    Chart Type
+                </label>
+
+                <select
+                    name="chart_type">
+
+                    {% for chart in chart_types %}
+
+                    <option value="{{ chart }}">
+                        {{ chart|title }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <div>
+
+                <label>
+                    X Axis
+                </label>
+
+                <select
+                    name="x_column">
+
+                    {% for column in columns %}
+
+                    <option value="{{ column }}">
+                        {{ column }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <div>
+
+                <label>
+                    Y Axis
+                </label>
+
+                <select
+                    name="y_column">
+
+                    {% for column in columns %}
+
+                    <option value="{{ column }}">
+                        {{ column }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <button
+            class="btn btn-success"
+            style="
+                width:100%;
+                padding:18px;
+                font-size:18px;
+            ">
+
+            🚀 Generate Chart
+
+        </button>
+
+    </form>
+
+</div>
+
+<br>
+
+<div class="card">
+
+    <h2 style="
+        margin-bottom:20px;
+    ">
+        Supported Charts
+    </h2>
+
+    <div style="
+        display:grid;
+        grid-template-columns:
+        repeat(auto-fit,minmax(180px,1fr));
+        gap:20px;
+    ">
+
+        <div class="chart-card">
+            📊<br><br>
+            Bar Chart
+        </div>
+
+        <div class="chart-card">
+            📈<br><br>
+            Line Chart
+        </div>
+
+        <div class="chart-card">
+            🟠<br><br>
+            Pie Chart
+        </div>
+
+        <div class="chart-card">
+            🔵<br><br>
+            Scatter Plot
+        </div>
+
+        <div class="chart-card">
+            📉<br><br>
+            Histogram
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
